@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    
+    <title>ieducate - transforming online education</title>
+  </head>
+  <body>
+    <nav class="navbar background h-nav">
+      <ul class="nav-list v-class">
+        <div class="logo"><img src="images/logo.jpeg" alt="laptiop" /></div>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="rightNav v-class">
+        <input type="text" name="search" id="search" />
+        <button class="btn btn-sm">search</button>
+      </div>
+
+      <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </nav>
+
+    <section class="background firstSection">
+      <div class="box-main">
+        <div class="firstHalf">
+          <p class="text-big">the future of education is here</p>
+          <p class="text-small">
+            Secondary education covers children aged 14 to 18, a group comprising 88.5 million children according to the 2001 Census of India. 
+          </p>
+          <div class="buttons">
+            <button class="btn">subscribe</button>
+            <button class="btn">watch video</button>
+          </div>
+        </div>
+        <div class="secondHalf">
+            <img src="images/logo.jpeg" alt="">
+        </div>
+      </div>
+    </section>
+
+    <!--************** service secion start******************* -->
+
+    <section class="section" id="services">
+      <div class="paras">
+      <p class="scetionTag text-big">The end of your search is here</p>
+      <p class="sectionSubTag text-small">Education in India is primarily managed by the state-run public education system, which falls under the command of the government at three levels: central, state and local.[7] Under various articles of the Indian Constitution and the Right of Children to Free and Compulsory Education Act, 2009, free and compulsory education is provided as a fundamental right to children aged 6 to 14. The approximate ratio of the total number of public schools to private schools in India is 10:3.[8]</p>
+    </div>
+
+      <div class="thumbnail">
+        <img src="images/logo.jpeg" alt="laptop img" class="imgFluid">
+      </div>
+    </section>
+
+    <section class="section section-left " id="about">
+      <div class="paras">
+      <p class="scetionTag text-big">transforming education in india</p>
+      <p class="sectionSubTag text-small">Education in India covers different levels and types of learning, such as early childhood education, primary education, secondary education, higher education, and vocational education. It varies significantly according to different factors, such as location (urban or rural), gender, caste, religion, language, and disability.</p>
+    </div>
+
+      <div class="thumbnail">
+        <img src="images/laptop2.jpeg" alt="laptop img" class="imgFluid">
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="paras">
+      <p class="scetionTag text-big">Lets grow together</p>
+      <p class="sectionSubTag text-small">India's All India Council of Technical Education (AICTE) reported, in 2013, that there are more than 4,599 vocational institutions that offer degrees, diploma and post-diploma in architecture, engineering, hotel management, infrastructure, pharmacy, technology, town services and others.
+        There were 1,740,000 students enrolled in these schools.[85] Total annual intake capacity for technical diplomas and degrees exceeded 3.4 million in 2012
+      </p>
+    </div>
+
+      <div class="thumbnail">
+        <img src="images/laptop3.jpeg" alt="laptop img" class="imgFluid">
+      </div>
+    </section>
+    <!--************** service secion end******************* -->
+
+    <hr>
+     <!--************** contact secion start******************* -->
+    <section class="contact" id="contact">
+      <h2 class="text-center">Contact Us</h2>
+      
+        <form  class="form" id="form" name="submit-to-google-sheet">
+        <input type="text" class="form-input" name="name" id="name" placeholder="enter your name">
+        <input type="email" class="form-input" name="email" id="email" placeholder="enter your email">
+        <input type="text" class="form-input" name="phone" id="phone" placeholder="enter your phone">
+        <textarea class="form-input" name="message" id="message" rows="10 " cols="30" placeholder="your message"></textarea>
+         
+
+        <button class="btn btn-sm btn-dark" name="btn">submit</button>
+      </form>
+
+      <span id="msg"></span>
+      
+      
+    </section>
+    <!--************** contact secion end******************* -->
+
+<!--************** footer secion start******************* -->
+
+    <footer class="background">
+      <p class="text-footer">
+      copyright &copy; 2024 -www.iEducate.com -All right reserved
+    </p>
+    </footer>
+
+    <!--************** footer secion end******************* -->
+
+    <script src="resp.js"></script>
+
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbz3Gkvft4S9Qk8WRTsMJa2MRxqrk9Qq2xGGQ4v-wSkgw9b8QGQ6ouqyIneAPyzQ-YZQ/exec'
+      const form = document.forms['submit-to-google-sheet']
+      const msg=document.getElementById("msg")
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            msg.innerHTML=" message sent successfully";
+            setTimeout(function(){
+              msg.innerHTML=" "
+            },5000)
+            form.reset()
+          })
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
+
+       <!-- <script>
+      let url='https://script.google.com/macros/s/AKfycbzPAD7YFkDTkr3_uBU5iyIGjBSthSKZeySEuoZD1oqgEeTIE1tKeOPpl9l-5Yo_BXGr/exec'
+
+      let form=document.querySelector('#form');
+      form.addEventListener("submit",(e)=>{
+        e.target.btn.innerHTML="submitting";
+        let d=new FormData(form);
+        fetch(url,{
+          method:"POST",
+          body:d
+        }).then((res)=>res.text())
+        .then((finalRes)=>{
+          e.target.btn.innerHTML="submit"
+          console.log(finalRes)
+      })
+        e.preventDefault();
+      })
+     </script>   -->
+
+     
+    </body>
+  
+</html>
